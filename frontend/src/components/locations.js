@@ -2,13 +2,19 @@ class Locations {
   constructor() {
     this.locations = []
     this.adapter = new LocationsAdapter()
-    //this.bindEventListeners()
+    this.initBindingsAndEventListeners()
     this.fetchAndLoadLocations()
   }
 
+  initBindingsAndEventListeners() {
+    this.locationsContainer = document.getElementById('locations-container')
+  }
+
   fetchAndLoadLocations() {
-    this.adapter.getLocations().then(locations => {
-      locations.forEach(location => this.locations.push(location))
+    this.adapter
+      .getLocations()
+      .then(locations => {
+        locations.forEach(location => this.locations.push(new Location(location)))
     })
     .then(() => {
       this.render()
@@ -16,7 +22,7 @@ class Locations {
   }
 
   render() {
-    const locationsContainer = document.getElementById('locations-container')
-    locationsContainer.innerHTML = 'Test Locations'
+    this.locationsContainer.innerHTML = this.locations.map(location => location.renderLi()).join('')
+
   }
 }
