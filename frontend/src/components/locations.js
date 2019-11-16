@@ -8,7 +8,15 @@ class Locations {
 
   fetchAndLoadLocations() {
     this.adapter.getLocations().then(locations => {
-      console.log(locations)
+      locations.forEach(location => this.locations.push(location))
     })
+    .then(() => {
+      this.render()
+    })
+  }
+
+  render() {
+    const locationsContainer = document.getElementById('locations-container')
+    locationsContainer.innerHTML = 'Test Locations'
   }
 }
