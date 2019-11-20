@@ -8,13 +8,22 @@ DATA = {
     ["Don Petit Mural", "45.006074", "-122.783994"]
   ],
 
-  # :tag_keys => ["location_id", "name"],
+  # :location_tag_keys => ["location", "tag"],
+  # :location_tags => [
+  #   [1,1],
+  #   [2,2],
+  #   [3,3],
+  #   [4,4],
+  #   [5,5]
+  # ],
+  #
+  # :tag_keys => ["name"],
   # :tags => [
-  #   [1, "waterfall"],
-  #   [2, "mural"],
-  #   [3, "iconic"],
-  #   [4, "bridge"],
-  #   [5, "mural"]
+  #   ["waterfall"],
+  #   ["mural"],
+  #   ["iconic"],
+  #   ["bridge"],
+  #   ["mural"]
   # ],
 
   :photo_keys => ["location_id", "url"],
@@ -30,6 +39,7 @@ DATA = {
 def main
   make_locations
   #make_tags
+  #make_location_tags
   make_photos
 end
 
@@ -43,15 +53,25 @@ def make_locations
   end
 end
 
-def make_tags
-  DATA[:tags].each do |tag|
-    new_tag = Tag.new
-    tag.each_with_index do |attribute, i|
-      new_tag.send(DATA[:tag_keys][i] + "=", attribute)
-    end
-    new_tag.save
-  end
-end
+# def make_location_tags
+#   DATA[:location_tags].each do |location_tag|
+#     new_location_tag = LocationTag.new
+#     location_tag.each_with_index do |attribute, i|
+#       new_location_tag.send(DATA[:location_tag_keys][i]+"=", attribute)
+#     end
+#     new_location_tag.save
+#   end
+# end
+
+# def make_tags
+#   DATA[:tags].each do |tag|
+#     new_tag = Tag.new
+#     tag.each_with_index do |attribute, i|
+#       new_tag.send(DATA[:tag_keys][i] + "=", attribute)
+#     end
+#     new_tag.save
+#   end
+# end
 
 def make_photos
   DATA[:photos].each do |photo|
