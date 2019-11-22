@@ -10,11 +10,12 @@ class LocationsAdapter {
     )
   }
 
-  createLocation(name, lat, long) {
+  createLocation(name, lat, long, url) {
     const locationData = {
       name: name,
       lat: lat,
-      long: long
+      long: long,
+      url: url
     }
 
     return fetch(this.baseUrl,{

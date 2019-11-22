@@ -30,6 +30,6 @@ class Api::V1::LocationsController < ApplicationController
 
   private
     def location_params
-      params.require(:location).permit(:name, :lat, :long, photo_attributes: [:url], tag_attributes: [:name])
+      params.require(:location).permit(:name, :lat, :long, photos_attributes: [:url])
     end
 end

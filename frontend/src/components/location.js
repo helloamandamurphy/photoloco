@@ -4,9 +4,10 @@ class Location {
     this.name = locationJSON.name
     this.lat = locationJSON.lat
     this.long = locationJSON.long
+    this.photo = locationJSON.photo
   }
 
   renderLi() {
-    return `<li data-id=${this.id}>${this.name}</li>`
+    return `<li data-id=${this.id}><img ${this.photo}>${this.name}</li>`
   }
 }
