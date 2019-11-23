@@ -1,17 +1,20 @@
 class Api::V1::LocationsController < ApplicationController
   def index
     @locations = Location.all
-    render json: @locations, status: 200
+    render json: @locations, :include => {:photos => {only: :url}}, :except => [:created_at, :updated_at], status: 200
   end
 
   def show
     @location = Location.find(params[:id])
-    render json: @location, status: 200
+    render json: @location, :include => {:photos => {only: :url}}, :except => [:created_at, :updated_at], status: 200
   end
 
   def create
-    @location = Location.create(location_params)
-    render json: @location, status: 200
+    @location = Location.new(location_params)
+    @location.save
+    @photo = Photo.new(url: params["photo"]["url"], location_id: @location.id)
+    @photo.save
+    render json: @location, :include => {:photos => {only: :url}}, :except => [:created_at, :updated_at], status: 200
   end
 
   def update
