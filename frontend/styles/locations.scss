@@ -1,0 +1,152 @@
+// Google font
+@import url('https://fonts.googleapis.com/css?family=News+Cycle|Work+Sans:100,300&display=swap');
+
+
+// ===== Variables ===== //
+
+// Fonts stuff
+$worksans: 'Work Sans', sans-serif;
+
+$newscycle: "News Cycle", sans-serif;
+
+$ff-base: $worksans;
+$ff-alt: $newscycle;
+
+$fs-base: 1rem;
+$fs-h1: 2.875rem;
+$fs-h2: 2.25rem;
+$fs-h3: 1.75rem;
+$fs-xl: 4rem;
+
+// Colours
+$white: #fff;
+$light-blue: #E6E7FD;
+$blue: #262CBF;
+$light-gray: #c2c2c2;
+$dark-gray: #e8e8e8;
+$black: #000;
+
+
+
+// ===== Mixins ===== //
+
+@mixin font-base($font-size: $fs-base, $font-weight: 300, $color: $black) {
+  font: {
+    family: $ff-base;
+    size: $font-size;
+    weight: $font-weight;
+  }
+  color: $color;
+}
+
+@mixin font-alt($font-size: $fs-base, $color: $black) {
+  font: {
+    family: $ff-alt;
+    size: $font-size;
+  }
+  color: $color;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+
+// ===== Styles ===== //
+
+body {
+  line-height: 1.6;
+  display: grid;
+  grid-template:
+    "header header header header" 10em
+    "hero hero hero hero" 50vh
+    ". main main ." auto
+    "footer footer footer footer" 10em
+    / 1fr minmax(30em, 5fr) 2fr 1fr;
+  grid-column-gap: 1.5em;
+}
+
+header {
+  grid-area: header;
+}
+
+header,
+footer {
+  background: #262CBF;
+  color: #E6E7FD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title {
+  @include font-alt($color: $light-blue, $font-size: $fs-xl);
+}
+
+.footer-title {
+  @include font-alt($color: $light-blue);
+}
+
+.add-location {
+  grid-area: hero;
+  background: $light-gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-location-title {
+  @include font-base($font-size: $fs-h1);
+  margin: 0;
+}
+
+input {
+  @include font-base
+}
+
+main {
+  grid-area: main;
+}
+
+.locations-header {
+  @include font-base($color: $blue, $font-size: $fs-h2);
+}
+
+footer {
+  grid-area: footer;
+}
+
+//Cards
+
+.card {
+  display: grid;
+  grid-template:
+    "img title"
+    "img content" auto / 1fr 1fr;
+  grid-column-gap: 1em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img {
+  grid-area: img;
+  max-width: 100%;
+}
+
+.card-title {
+  grid-area: title;
+  margin: 0;
+  @include font-base($color: $blue, $font-size: $fs-h3, $font-weight: 300);
+}
+
+.card-content {
+  grid-area: content;
+  @include font-base($color: $black, $font-weight: 100);
+
+  a {
+    color: $blue;
+    font-size: 1.1em;
+  }
+}

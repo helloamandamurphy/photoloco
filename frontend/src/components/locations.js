@@ -16,6 +16,9 @@ class Locations {
 
   initBindingsAndEventListeners() {
     this.locationsContainer = document.getElementById('locations-container')
+    this.cardImg = document.getElementById('card-img')
+    this.cardTitle = document.getElementById('card-title')
+    this.cardLink = document.getElementById('card-link')
     this.newLocationName = document.getElementById('new-location-name')
     this.newLocationLat = document.getElementById('new-location-lat')
     this.newLocationLong = document.getElementById('new-location-long')
@@ -63,7 +66,6 @@ class Locations {
 
   render() {
     //render the Location list on the visible page by inserting it into the HTML
-    this.locationsContainer.innerHTML = this.locations.map(location => location.renderLi()).join('')
-
+    this.locationsContainer.innerHTML = this.locations.map(location => location.renderCard()).join('')
   }
 }

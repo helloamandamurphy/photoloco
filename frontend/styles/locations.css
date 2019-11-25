@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=News+Cycle|Work+Sans:100,300&display=swap");
+body {
+  line-height: 1.6;
+  display: grid;
+  grid-template: "header header header header" 10em "hero hero hero hero" 50vh ". main main ." auto "footer footer footer footer" 10em/1fr minmax(30em, 5fr) 2fr 1fr;
+  grid-column-gap: 1.5em; }
+
+header {
+  grid-area: header; }
+
+header,
+footer {
+  background: #262CBF;
+  color: #E6E7FD;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.header-title {
+  font-family: "News Cycle", sans-serif;
+  font-size: 4rem;
+  color: #E6E7FD;
+  text-transform: uppercase;
+  letter-spacing: 0.3em; }
+
+.footer-title {
+  font-family: "News Cycle", sans-serif;
+  font-size: 1rem;
+  color: #E6E7FD;
+  text-transform: uppercase;
+  letter-spacing: 0.3em; }
+
+.add-location {
+  grid-area: hero;
+  background: #c2c2c2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.add-location-title {
+  font-family: "Work Sans", sans-serif;
+  font-size: 2.875rem;
+  font-weight: 300;
+  color: #000;
+  margin: 0; }
+
+input {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #000; }
+
+main {
+  grid-area: main; }
+
+.locations-header {
+  font-family: "Work Sans", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 300;
+  color: #262CBF; }
+
+footer {
+  grid-area: footer; }
+
+.card {
+  display: grid;
+  grid-template: "img title" "img content" auto / 1fr 1fr;
+  grid-column-gap: 1em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  justify-content: center;
+  align-items: center; }
+
+.card-img {
+  grid-area: img;
+  max-width: 100%; }
+
+.card-title {
+  grid-area: title;
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: #262CBF; }
+
+.card-content {
+  grid-area: content;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #000; }
+  .card-content a {
+    color: #262CBF;
+    font-size: 1.1em; }
+
+/*# sourceMappingURL=locations.css.map */
