@@ -17,6 +17,7 @@ class LocationsAdapter {
     )
   }
 
+//This creates a constant to be passed through the POST request
   createLocation(name, lat, long, photo) {
     const locationData = {
       name: name,
@@ -27,6 +28,7 @@ class LocationsAdapter {
       }
     }
 
+//This Posts the "New Location" form information to the backend
     return fetch(this.baseUrl,{
       method: 'POST',
       headers: {

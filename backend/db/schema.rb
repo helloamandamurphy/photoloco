@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_151812) do
     t.string "name"
     t.decimal "lat", precision: 9, scale: 6
     t.decimal "long", precision: 9, scale: 6
+    t.integer "likes", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

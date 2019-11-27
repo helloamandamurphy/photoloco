@@ -4,6 +4,7 @@ class Location {
     this.name = locationJSON.name
     this.lat = locationJSON.lat
     this.long = locationJSON.long
+    this.likes = locationJSON.likes
     this.photo = locationJSON.photos[0].url
   }
 
@@ -13,6 +14,7 @@ class Location {
       <img class="card-img" src="${this.photo}" alt="${this.name}">
       <h2 class="card-title">${this.name}</h2>
       <div class="card-content">
+        <p class="likes">Likes: ${this.likes}</p>
         <ul>
           <li>Tag</li>
           <li>Tag</li>

@@ -16,9 +16,9 @@ class Locations {
 
   initBindingsAndEventListeners() {
     this.locationsContainer = document.getElementById('locations-container')
-    this.cardImg = document.getElementById('card-img')
-    this.cardTitle = document.getElementById('card-title')
-    this.cardLink = document.getElementById('card-link')
+    // this.cardImg = document.getElementById('card-img')
+    // this.cardTitle = document.getElementById('card-title')
+    // this.cardLink = document.getElementById('card-link')
     this.newLocationName = document.getElementById('new-location-name')
     this.newLocationLat = document.getElementById('new-location-lat')
     this.newLocationLong = document.getElementById('new-location-long')
@@ -27,6 +27,8 @@ class Locations {
     this.locationForm.addEventListener('submit', this.createLocation.bind(this))
   }
 
+//This creates a new Location based on information
+//submitted through the form, then renders it on the page
   createLocation(e){
     e.preventDefault()
     const name = this.newLocationName.value
@@ -39,9 +41,12 @@ class Locations {
       this.resetField()
       this.render()
     })
-
   }
 
+//This fetches all existing locations from the backend,
+//and renders it on the page: backend renders JSON,
+// the adapter sets the baseUrl where the JSON is rendered,
+// getLocations uses a fetch request to pull the JSON
   fetchAndLoadLocations() {
     this.adapter
       .getLocations()
@@ -57,6 +62,7 @@ class Locations {
     })
   }
 
+//Resets form input value after form is submitted
   resetField() {
     this.newLocationName.value = ''
     this.newLocationLat.value = ''
