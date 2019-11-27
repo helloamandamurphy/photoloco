@@ -18,14 +18,13 @@ $fs-h2: 2.25rem;
 $fs-h3: 1.75rem;
 $fs-xl: 4rem;
 
-// Colours
+// Colors
 $white: #fff;
 $light-blue: #E6E7FD;
-$blue: #262CBF;
+$accent-color: #bdc8de;
+$blue: #486090;
 $light-gray: #c2c2c2;
-$dark-gray: #e8e8e8;
 $black: #000;
-
 
 
 // ===== Mixins ===== //
@@ -70,8 +69,8 @@ header {
 
 header,
 footer {
-  background: #262CBF;
-  color: #E6E7FD;
+  background: $blue;
+  // color: #E6E7FD;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,6 +117,7 @@ footer {
 //Cards
 
 .card {
+  position: relative;
   display: grid;
   grid-template:
     "img title"
@@ -148,5 +148,69 @@ footer {
   a {
     color: $blue;
     font-size: 1.1em;
+  }
+
+  button {
+    position: absolute;
+    right: 1.5em;
+    bottom: 1.5em;
+    margin: auto;
+    width: 90px;
+    height: 40px;
+    background: $white;
+    border: 0;
+    font-size: .9rem;
+    font-family: "Work Sans", sans-serif;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 2px 0px rgba($blue,.1);
+    outline: none;
+
+    &:hover {
+      color: $accent-color;
+      transform: scale(1.2);
+
+      span {
+        opacity: 1;
+        transition: all .2s ease-in-out;
+      }
+    }
+
+    &:active {
+      transform: scale(1.4);
+    }
+
+    span {
+      position: absolute;
+      top: -55px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background: $accent-color;
+      color: rgba($blue, .5);
+      padding: 10px 0;
+      border-radius: 100px;
+      opacity: 0;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:after {
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid $accent-color;
+      }
+    }
   }
 }

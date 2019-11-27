@@ -10,8 +10,7 @@ header {
 
 header,
 footer {
-  background: #262CBF;
-  color: #E6E7FD;
+  background: #486090;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -58,12 +57,13 @@ main {
   font-family: "Work Sans", sans-serif;
   font-size: 2.25rem;
   font-weight: 300;
-  color: #262CBF; }
+  color: #486090; }
 
 footer {
   grid-area: footer; }
 
 .card {
+  position: relative;
   display: grid;
   grid-template: "img title" "img content" auto / 1fr 1fr;
   grid-column-gap: 1em;
@@ -83,7 +83,7 @@ footer {
   font-family: "Work Sans", sans-serif;
   font-size: 1.75rem;
   font-weight: 300;
-  color: #262CBF; }
+  color: #486090; }
 
 .card-content {
   grid-area: content;
@@ -92,7 +92,57 @@ footer {
   font-weight: 100;
   color: #000; }
   .card-content a {
-    color: #262CBF;
+    color: #486090;
     font-size: 1.1em; }
+  .card-content button {
+    position: absolute;
+    right: 1.5em;
+    bottom: 1.5em;
+    margin: auto;
+    width: 90px;
+    height: 40px;
+    background: #fff;
+    border: 0;
+    font-size: .9rem;
+    font-family: "Work Sans", sans-serif;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 2px 0px rgba(72, 96, 144, 0.1);
+    outline: none; }
+    .card-content button:hover {
+      color: #bdc8de;
+      transform: scale(1.2); }
+      .card-content button:hover span {
+        opacity: 1;
+        transition: all .2s ease-in-out; }
+    .card-content button:active {
+      transform: scale(1.4); }
+    .card-content button span {
+      position: absolute;
+      top: -55px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background: #bdc8de;
+      color: rgba(72, 96, 144, 0.5);
+      padding: 10px 0;
+      border-radius: 100px;
+      opacity: 0;
+      transition: all .2s ease-in-out; }
+      .card-content button span:hover {
+        opacity: 1; }
+      .card-content button span:after {
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #bdc8de; }
 
 /*# sourceMappingURL=locations.css.map */
