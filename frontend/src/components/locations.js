@@ -12,19 +12,19 @@ class Locations {
     this.initBindingsAndEventListeners()
     //Load existing Locations, defined below:
     this.fetchAndLoadLocations()
-    //debugger
+    
+    // calling this.likeListener() here does not work.
   }
 
   initBindingsAndEventListeners() {
     this.locationsContainer = document.getElementById('locations-container')
-    this.buttons = document.getElementsByTagName('button')
+    // this.buttons = document.getElementsByTagName('button')
     this.newLocationName = document.getElementById('new-location-name')
     this.newLocationLat = document.getElementById('new-location-lat')
     this.newLocationLong = document.getElementById('new-location-long')
     this.newLocationPhoto = document.getElementById('new-location-photo')
     this.locationForm = document.getElementById('new-location-form')
     this.locationForm.addEventListener('submit', this.createLocation.bind(this))
-    //debugger
   }
 
 //This creates a new Location based on information
@@ -59,6 +59,7 @@ class Locations {
     })
     .then(() => {
       this.render()
+      this.likeListener()
     })
   }
 
@@ -73,5 +74,15 @@ class Locations {
   render() {
     //render the Location list on the visible page by inserting it into the HTML
     this.locationsContainer.innerHTML = this.locations.map(location => location.renderCard()).join('')
+  }
+
+  likeListener() {
+    this.buttons = document.getElementsByTagName('button')
+    let i = 0;
+    for (i = 0; i < this.buttons.length; i++) {
+      this.buttons[i].addEventListener("click", function() {
+        alert("you clicked");
+      });
+    }
   }
 }
