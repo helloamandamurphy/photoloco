@@ -67,7 +67,7 @@ footer {
   display: grid;
   grid-template: "img title" "img content" auto / 1fr 1fr;
   grid-column-gap: 1em;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
   padding: 1.5em;
   margin-bottom: 1.5em;
   justify-content: center;

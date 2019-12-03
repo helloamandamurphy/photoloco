@@ -12,19 +12,19 @@ class Locations {
     this.initBindingsAndEventListeners()
     //Load existing Locations, defined below:
     this.fetchAndLoadLocations()
+    //debugger
   }
 
   initBindingsAndEventListeners() {
     this.locationsContainer = document.getElementById('locations-container')
-    // this.cardImg = document.getElementById('card-img')
-    // this.cardTitle = document.getElementById('card-title')
-    // this.cardLink = document.getElementById('card-link')
+    this.buttons = document.getElementsByTagName('button')
     this.newLocationName = document.getElementById('new-location-name')
     this.newLocationLat = document.getElementById('new-location-lat')
     this.newLocationLong = document.getElementById('new-location-long')
     this.newLocationPhoto = document.getElementById('new-location-photo')
     this.locationForm = document.getElementById('new-location-form')
     this.locationForm.addEventListener('submit', this.createLocation.bind(this))
+    //debugger
   }
 
 //This creates a new Location based on information
