@@ -37,6 +37,7 @@ class Locations {
       this.locations.push(new Location(location))
       this.resetField()
       this.render()
+      this.likeListener()
     })
   }
 

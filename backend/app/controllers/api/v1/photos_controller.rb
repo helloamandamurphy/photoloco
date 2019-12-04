@@ -14,18 +14,18 @@ class Api::V1::PhotosController < ApplicationController
     render json: @photo, status: 200
   end
 
-  def update
-    @photo = Photo.find(params[:id])
-    @photo.update(photo_params)
-    render json: @photo, status: 200
-  end
+  # def update
+  #   @photo = Photo.find(params[:id])
+  #   @photo.update(photo_params)
+  #   render json: @photo, status: 200
+  # end
 
-  def destroy
-    @photo = Photo.find(params[:id])
-    @photo.delete
-
-    render json: {photoId: @photo.id}
-  end
+  # def destroy
+  #   @photo = Photo.find(params[:id])
+  #   @photo.delete
+  #
+  #   render json: {photoId: @photo.id}
+  # end
 
   private
     def photo_params
