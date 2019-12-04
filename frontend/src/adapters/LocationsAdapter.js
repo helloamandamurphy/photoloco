@@ -29,12 +29,26 @@ class LocationsAdapter {
     }
 
 //This Posts the "New Location" form information to the backend
-    return fetch(this.baseUrl,{
+    return fetch(this.baseUrl, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify(locationData)
+    }).then(res => res.json())
+  }
+
+  updateLike(id, newValue) {
+    const location = {
+      likes: newValue,
+    }
+
+    return fetch(`${this.baseUrl}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ location }),
     }).then(res => res.json())
   }
 }

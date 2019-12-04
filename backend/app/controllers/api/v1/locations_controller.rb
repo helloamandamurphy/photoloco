@@ -1,6 +1,6 @@
 class Api::V1::LocationsController < ApplicationController
   def index
-    @locations = Location.all
+    @locations = Location.by_id
     render json: @locations, :include => {:photos => {only: :url}}, :except => [:created_at, :updated_at], status: 200
   end
 
@@ -19,16 +19,16 @@ class Api::V1::LocationsController < ApplicationController
 
   def update
     @location = Location.find(params[:id])
-    @location.update(location_params)
+    @location.update(likes: params["location"]["likes"])
     render json: @location, status: 200
   end
 
-  def destroy
-    @location = Location.find(params[:id])
-    @location.delete
-
-    render json: {locationId: @location.id}
-  end
+  # def destroy
+  #   @location = Location.find(params[:id])
+  #   @location.delete
+  #
+  #   render json: {locationId: @location.id}
+  # end
 
 
   private

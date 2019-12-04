@@ -12,13 +12,10 @@ class Locations {
     this.initBindingsAndEventListeners()
     //Load existing Locations, defined below:
     this.fetchAndLoadLocations()
-    
-    // calling this.likeListener() here does not work.
   }
 
   initBindingsAndEventListeners() {
     this.locationsContainer = document.getElementById('locations-container')
-    // this.buttons = document.getElementsByTagName('button')
     this.newLocationName = document.getElementById('new-location-name')
     this.newLocationLat = document.getElementById('new-location-lat')
     this.newLocationLong = document.getElementById('new-location-long')
@@ -73,16 +70,26 @@ class Locations {
 
   render() {
     //render the Location list on the visible page by inserting it into the HTML
-    this.locationsContainer.innerHTML = this.locations.map(location => location.renderCard()).join('')
+    this.locationsContainer.innerHTML = this.locations.map(location =>
+      location.renderCard()).join('')
   }
 
   likeListener() {
     this.buttons = document.getElementsByTagName('button')
     let i = 0;
     for (i = 0; i < this.buttons.length; i++) {
-      this.buttons[i].addEventListener("click", function() {
-        alert("you clicked");
-      });
+      this.buttons[i].addEventListener("click", this.likeIncrement.bind(this))
     }
+  }
+
+  likeIncrement(e) {
+    const likes = parseInt(e.target.value)
+    const newValue = likes + 1
+    const id = parseInt(e.target.id)
+
+    e.target.innerText = `${newValue} Likes`
+    e.target.value = newValue
+
+    this.adapter.updateLike(id, newValue)
   }
 }

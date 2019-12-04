@@ -20,7 +20,7 @@ class Location {
           <li>Tag</li>
         </ul>
         <a class="card-link" target=”_blank” href="http://www.google.com/maps/place/${this.lat},${this.long}">Find this Location</a>
-        <button type='button'>
+        <button type='button' value=${this.likes} id=${this.id}>
           ${this.likes} Likes
           <span><i class="fas fa-thumbs-up"></i></span>
         </button>
