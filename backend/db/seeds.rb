@@ -3,7 +3,11 @@ Location.create([
     lat: 44.878969,
     long: -122.659256,
     likes: 10,
-    photos_attributes: [url: "https://www.oregon.com/sites/default/files/SilverFallsSouthFls.jpg"]
+    photos_attributes: [
+      {url: "https://www.oregon.com/sites/default/files/SilverFallsSouthFls.jpg"},
+      {url: "https://d3qvqlc701gzhm.cloudfront.net/thumbs/511bb60fa282965497501298dad4a5ca594a7786ce875bafd7fa1d8d376fc01f-750.jpg"},
+      {url: "https://www.oregonlottery.org/images/default-source/state-parks-images/silverfalls-hero.jpg"}
+    ]
   },
 
   { name: "Bobbie the Wonder Dog Mural",
