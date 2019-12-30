@@ -23,12 +23,12 @@ class Api::V1::LocationsController < ApplicationController
     render json: @location, status: 200
   end
 
-  # def destroy
-  #   @location = Location.find(params[:id])
-  #   @location.delete
-  #
-  #   render json: {locationId: @location.id}
-  # end
+  def destroy
+    @location = Location.find(params[:id])
+    @location.delete
+
+    render json: {locationId: @location.id}
+  end
 
 
   private
