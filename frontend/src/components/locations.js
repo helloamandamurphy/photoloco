@@ -38,6 +38,7 @@ class Locations {
       this.resetField()
       this.render()
       this.likeListener()
+      // this.sortListener()
     })
   }
 
@@ -58,6 +59,7 @@ class Locations {
     .then(() => {
       this.render()
       this.likeListener()
+      // this.sortListener()
     })
   }
 
@@ -93,4 +95,15 @@ class Locations {
 
     this.adapter.updateLike(id, newValue)
   }
+
+//Live Coding Challenge (Incomplete Progress to be completed for 2nd half of assessment)
+  // sortListener() {
+  //   this.sortButton = document.getElementById('sort-button')
+  //   this.sortButton.addEventListener("click", this.sortLocations.bind(this))
+  // }
+  //
+  // sortLocations() {
+  //   fetch('http://localhost:3000/api/v1/locations').then(res => res.json())
+  //   .then(locations => console.log(locations))
+  // }
 }
