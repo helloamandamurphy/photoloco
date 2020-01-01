@@ -38,6 +38,7 @@ class Locations {
       this.resetField()
       this.render()
       this.likeListener()
+      this.viewMoreListener()
       // this.sortListener()
     })
   }
@@ -59,6 +60,7 @@ class Locations {
     .then(() => {
       this.render()
       this.likeListener()
+      this.viewMoreListener()
       // this.sortListener()
     })
   }
@@ -94,6 +96,31 @@ class Locations {
     e.target.value = newValue
 
     this.adapter.updateLike(id, newValue)
+  }
+
+  viewMoreListener() {
+    this.viewMores = document.getElementsByClassName('view-more')
+    let i = 0;
+    for (i = 0; i < this.viewMores.length; i++) {
+      this.viewMores[i].addEventListener("click", this.viewMore.bind(this))
+    }
+  }
+
+  viewMore(e) {
+    //There has to be a cleaner way to do this, but it works for now.
+    //Need to remove first image from the additional photos, but backend method currently isn't working.
+    e.preventDefault()
+    const locationsUrl = "http://localhost:3000/api/v1/locations"
+    const photosContainer = e.target.parentElement.parentElement.querySelector('div.more-photos')
+    const locationId = parseInt(e.target.id)
+
+    fetch(`${locationsUrl}/${locationId}`)
+      .then(res => res.json())
+        .then(location => {
+          const locationName = location.name
+          photosContainer.innerHTML = location.photos.map(photo =>
+          `<img class="card-img" src="${photo.url}" alt"${locationName}">`).join('')
+        })
   }
 
 //Live Coding Challenge (Incomplete Progress to be completed for 2nd half of assessment)

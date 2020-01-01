@@ -12,4 +12,9 @@ class Location < ApplicationRecord
   accepts_nested_attributes_for :photos
 
   scope :by_id, -> {order(id: :desc)}
+
+#Wrote this to eliminate repeat photos, but it's not working yet.
+  # def only_new_photos
+  #   self.photos.drop(1)
+  # end
 end
