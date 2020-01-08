@@ -39,7 +39,6 @@ class Locations {
       this.render()
       this.likeListener()
       this.viewMoreListener()
-      // this.sortListener()
     })
   }
 
@@ -61,7 +60,6 @@ class Locations {
       this.render()
       this.likeListener()
       this.viewMoreListener()
-      // this.sortListener()
     })
   }
 
@@ -75,16 +73,16 @@ class Locations {
 
   render() {
     //render the Location list on the visible page by inserting it into the HTML
-    this.locationsContainer.innerHTML = this.locations.map(location =>
-      location.renderCard()).join('')
+    this.locationsContainer.innerHTML = this.locations.map(location => location.renderCard()).join('')
   }
 
+// LIKES
   likeListener() {
     this.buttons = document.getElementsByTagName('button')
-    let i = 0;
-    for (i = 0; i < this.buttons.length; i++) {
-      this.buttons[i].addEventListener("click", this.likeIncrement.bind(this))
-    }
+
+    this.buttons.forEach(button =>
+      button.addEventListener("click", this.likeIncrement.bind(this))
+    )
   }
 
   likeIncrement(e) {
@@ -98,12 +96,12 @@ class Locations {
     this.adapter.updateLike(id, newValue)
   }
 
+// VIEW MORE PHOTOS
   viewMoreListener() {
     this.viewMores = document.getElementsByClassName('view-more')
-    let i = 0;
-    for (i = 0; i < this.viewMores.length; i++) {
-      this.viewMores[i].addEventListener("click", this.viewMore.bind(this))
-    }
+    this.viewMores.forEach(viewMore =>
+      viewMore.addEventListener("click", this.viewMore.bind(this))
+    )
   }
 
   viewMore(e) {
@@ -122,15 +120,4 @@ class Locations {
           `<img class="card-img" src="${photo.url}" alt"${locationName}">`).join('')
         })
   }
-
-//Live Coding Challenge (Incomplete Progress to be completed for 2nd half of assessment)
-  // sortListener() {
-  //   this.sortButton = document.getElementById('sort-button')
-  //   this.sortButton.addEventListener("click", this.sortLocations.bind(this))
-  // }
-  //
-  // sortLocations() {
-  //   fetch('http://localhost:3000/api/v1/locations').then(res => res.json())
-  //   .then(locations => console.log(locations))
-  // }
 }
