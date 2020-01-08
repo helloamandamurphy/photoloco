@@ -39,6 +39,7 @@ class Locations {
       this.render()
       this.likeListener()
       this.viewMoreListener()
+      this.sortListener()
     })
   }
 
@@ -60,6 +61,7 @@ class Locations {
       this.render()
       this.likeListener()
       this.viewMoreListener()
+      this.sortListener()
     })
   }
 
@@ -119,5 +121,55 @@ class Locations {
           photosContainer.innerHTML = location.photos.map(photo =>
           `<img class="card-img" src="${photo.url}" alt"${locationName}">`).join('')
         })
+  }
+
+  // SORT FEATURE
+  sortListener() {
+    this.sortButton = document.getElementById('sort-button')
+    this.sortButton.addEventListener("click", this.sortLocations.bind(this))
+  }
+
+  sortLocations() {
+    //This is currently sorting the locations alphabetically in the this.locations array,
+    //but I have not yet been able to render it sorted yet.
+
+    // e.preventDefault() Not sure if this is necessary here.
+    fetch('http://localhost:3000/api/v1/locations').then(res => res.json())
+      .then(locations => {
+        // Are these two lines necessary? Could we just manipulate the this.locations array,
+        //since it's declared in the constructor?
+        this.locations = locations.sort(function(a,b) {
+          let nameA = a.name;
+          let nameB = b.name;
+
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+          return 0;
+        }
+      )
+    })
+      .then(() => {
+        this.render()
+        //render() calls on renderCard() in the Location.js file, and this is where it is currently breaking.
+        //Currently getting this error:
+            // locations.js:79 Uncaught (in promise) TypeError: location.renderCard is not a function
+            //     at locations.js:79
+            //     at Array.map (<anonymous>)
+            //     at Locations.render (locations.js:78)
+            //     at locations.js:156
+            // (anonymous)	@	locations.js:79
+            // render	@	locations.js:78
+            // (anonymous)	@	locations.js:156
+            // Promise.then (async)
+            // sortLocations	@	locations.js:155
+        this.likeListener()
+        this.viewMoreListener()
+        // this.sortListener() Don't think this is necessary here.
+      })
   }
 }
